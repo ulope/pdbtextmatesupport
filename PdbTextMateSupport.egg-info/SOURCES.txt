@@ -1,0 +1,9 @@
+PdbTextMateSupport.py
+README.txt
+pdbrc.sample
+pdbtmsupport
+setup.py
+PdbTextMateSupport.egg-info/PKG-INFO
+PdbTextMateSupport.egg-info/SOURCES.txt
+PdbTextMateSupport.egg-info/dependency_links.txt
+PdbTextMateSupport.egg-info/top_level.txt

@@ -1,0 +1,6 @@
+from rlcompleter import Completer
+pdb.Pdb.complete = Completer(locals()).complete
+
+from PdbTextMateSupport import preloop, precmd
+pdb.Pdb.preloop = preloop
+pdb.Pdb.precmd = precmd

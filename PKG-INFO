@@ -1,0 +1,56 @@
+Metadata-Version: 1.0
+Name: PdbTextMateSupport
+Version: 0.3
+Summary: Display source code in TextMate while debugging with pdb.
+Home-page: https://svn.zitc.de/trac/pdbtextmatesupport
+Author: Andreas Zeidler
+Author-email: az@zitc.de
+License: GPL
+Download-URL: http://cheeseshop.python.org/pypi/PdbTextMateSupport/
+Description: This module is used to hook up pdb_, the python debugger, with TextMate_, an
+        advanced text and programming editor for Mac OS, enabling it to display the
+        debugged source code during a pdb_ session.
+        
+        .. _pdb: http://docs.python.org/lib/module-pdb.html
+        .. _TextMate: http://macromates.com/
+        
+        After downloading and unpacking the package, you should install the helper
+        module using::
+        
+        $ python setup.py install
+        
+        Next you need to hook up pdb_ with this module by add the following to your
+        ``.pdbrc``::
+        
+        from PdbTextMateSupport import preloop, precmd
+        pdb.Pdb.preloop = preloop
+        pdb.Pdb.precmd = precmd
+        
+        The easiest way to do this is to use the provided script::
+        
+        $ pdbtmsupport enable
+        
+        Alternatively you can also do it manually.  The ``.pdbrc`` is located in your
+        home folder and possibly needs to be created first.  You may also use the
+        supplied sample configuration file for pdb_ to enable the hook like::
+        
+        $ cp pdbrc.sample ~/.pdbrc
+        
+        Afterwards TextMate_ should get started automatically whenever you enter a
+        debug session.  The current source line will be displayed simultaneously while
+        stepping through the code.  However, having the cursor moved automatically
+        within that source file is not always very obvious, so you might want to use
+        the "Highlight current line" feature, which can be enabled in the "General"
+        tab in TextMate's preferences.
+Keywords: textmate pdb
+Platform: Mac OS X
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Environment :: MacOS X
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Debuggers
+Classifier: Topic :: Text Editors

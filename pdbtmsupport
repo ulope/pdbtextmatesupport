@@ -1,0 +1,29 @@
+#!/bin/bash
+
+rc=$HOME/.pdbrc
+
+case "$1" in
+    enable)
+	grep -q '^from PdbTextMateSupport import preloop, precmd$' $rc && exit 0
+	pdbrc=$(
+	    cat $rc;
+	    echo;
+	    echo 'from PdbTextMateSupport import preloop, precmd';
+	    echo 'pdb.Pdb.preloop = preloop';
+	    echo 'pdb.Pdb.precmd = precmd' )
+	echo "$pdbrc" > $rc
+	echo -e "don't forget to enable the 'highlight current line'\nsetting in your textmate prefs... ;)"
+  	;;
+    disable)
+    	pdbrc=$(
+	    cat $rc |\
+	    grep -v '^from PdbTextMateSupport import preloop, precmd$' |\
+	    grep -v '^pdb\.Pdb\.preloop = preloop$' |\
+	    grep -v '^pdb\.Pdb\.precmd = precmd$' )
+	echo "$pdbrc" > $rc
+    	;;
+    *)
+    	echo "Usage: $0 {enable|disable}"
+	exit 1
+esac
+
